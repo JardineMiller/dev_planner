@@ -1,0 +1,120 @@
+{
+	/* See all the pre-defined configs here: https://www.npmjs.com/package/eslint-config-defaults */
+	"root": true, //to make sure parent configs are skipped
+	"parser": "babel-eslint",
+	"plugins": [],
+	"env": {
+		//"amd": true,
+		"browser": true,
+		//"jquery": true,
+		//"node": true,
+		//"es6": true,
+		"worker": true
+	},
+	//"extends": "eslint:recommended", //the rules below should capture most of the recommended rules, but belt and braces and all that
+	"rules": {
+		//rule values 0 = off, 1 = warn, 2 = error
+		//if the rule has a //F comment, the linter will try to auto-fix the warning/error if you tell it to
+		
+		/* documentation */
+		//both documentation rules are disabled for now because we have too many gaps
+		"require-jsdoc": [0, {
+			"require": { 
+				"FunctionDeclaration": true, 
+				"MethodDefinition": true, 
+				"ClassDeclaration": true 
+				//"ArrowFunctionExpression": true //not supported in eslint 2.0 which is used in VS2017
+			}
+		}],
+		"valid-jsdoc": [
+		    0,
+		    { "requireReturn": false }
+		],
+			
+		/* sloppy/buggy code prevention */
+		"eqeqeq": 2, //F //conditionals must use the type explicit === / !== instead of == / !=
+		"no-cond-assign": 2, //you must not make assignments in conditional statements
+		"valid-typeof": 2, //it's probably an error if you compare the result of typeof to arbitrary string literals
+		"use-isnan": 2, //you must use isNaN() rather than trying to compare with NaN
+		"no-obj-calls": 2, //you must not call global objects as functions (e.g. Math, JSON)
+		"no-loop-func": 2, //functions must not be defined inside for loops
+		"no-undef": 2, //you must not use undeclared variables unless they are in the /*global */ comment
+		"no-use-before-define": 2, //functions/variables should not be used before they are defined
+		"no-inner-declarations": [2, "functions"], //function declarations can only be at the top level, variables can be anywhere because we are still working with ES5
+		"no-func-assign": 2, //function declarations should never be reassigned
+		"no-useless-return": 2, //F //there must be no useless returns. If they exist, it points to sloppiness or bugs.
+		"radix": 2, //parseInt must have a radix
+		"curly": 2, //F //ensure consistent curly braces around blocks (if/for/...)
+		"consistent-return": 2, //functions must either have explicit return statements in all branches or none at all
+		"no-magic-numbers": [1, {"ignoreArrayIndexes": true, "ignore": [0]}], //hardcoded magic numbers are not good
+		"no-unused-vars": 2, //you should not have unused variables
+		"no-unreachable": 2, //unreachable code usually points to an error
+    	"no-lone-blocks": 1, //once we use ES6, local blocks might be useful but until then, it's likely an error
+        "semi": 2, //F //semicolons should be used to avoid possible ASI pitfalls
+		"no-unexpected-multiline": 2, //this rule catches some additional ASI pitfalls
+		"no-extra-semi": 1, //F //using multiple semicolons for no reason is sloppy
+		"no-extra-boolean-cast": 2, //F //unnecessary casts to a boolean are sloppy and possibly errors
+		"no-unsafe-negation": 2, //F //unsafe negations are unsafe
+		"no-unsafe-finally": 1, //finally blocks can produce unexpected results
+		"no-sparse-arrays": 2, //if you use sparse arrays you are probably doing it wrong or have a typo in your code
+		"no-regex-spaces": 2, //F //safe space notation for regexes
+		"no-empty-character-class": 2, //empty character classes in regexes are probably errors (they don't match anything anyway)
+		"no-invalid-regexp": 2, //any regex you use must be a valid regex
+		"no-control-regex": 2, //if you use control characters in a regex, it's probably a mistake
+		"no-fallthrough": 2, //you must not implicitly fallthrough after doing something in a switch/case
+		"no-duplicate-case": 2, //multiple identical cases in a switch are usually (copy-paste) errors
+		"no-dupe-keys": 2, //multiple identical keys in an object are usually (copy-paste) errors
+		"no-dupe-args": 2, //multiple identical parameters of a function are usually (copy-paste) errors
+		"no-redeclare": 2, //re-declaring a variable is either confusing or sloppy
+		"no-implicit-coercion": 1, //you should not make implicit type conversions
+		"no-console": 1, //you should be using logger.X instead
+		"no-debugger": 1, //F //you should not be triggering the debugger in production code
+		"no-mixed-operators": 2, //mixed logical operations usually indicate a logical error
+		"no-multi-assign": 1, //chain assignments can be hard to read and can lead to errors
+		"no-unneeded-ternary": 1, //F //don't use a ternary if you don't have to
+		"no-compare-neg-zero": 2, //comparing against -0 is probably not something you intended
+		"no-octal": 2, //octal literals are confusing or mistakes
+		"no-ex-assign": 2, //you must not reassign another value to an exception parameter in a catch
+		"no-global-assign": 2, //modifications of global read-only variables are bad
+		"no-empty": 2, //empty blocks are usually mistakes or just plain sloppy
+		"no-constant-condition": 2, //constant conditions (e.g. if (true) {}) are usuall remnants of testing code that needs cleaning up
+		"no-delete-var": 2, //delete operator is means to be used on object properties, not on variables
+		"no-useless-escape": 1, //escaping non-special characters doesn't have any effect, so can generally be safely removed
+		"no-self-assign": 2, //self-assignment is probably a mistake
+		"no-empty-pattern": 2, //empty curly braces in destructuring patterns have no effect, so probably a mistake
+		"no-case-declarations": 2, //declarations in cases are visible to the entire switch block, so probably a mistake, mostly relevant for ES6
+
+		/* naming conventions */
+		"func-names": 2, //functions must have names
+		"func-name-matching": 1, //when assigned to a variable, function should have the same name
+
+		/* visual code style conventions */
+		"quotes": [1, "double"], //F //strings should always have a double quote on the outer level
+		"quote-props": [2, "as-needed"], //F //object literal property names must be in quotes as necessary, but only when needed
+		"indent": [1, 4], //F //4 spaces per level of indentation
+		"no-mixed-spaces-and-tabs": 1, //sloppy indentation
+        "no-trailing-spaces": 1,//[1, {"ignoreComments": true}], //sloppy spaces //ignoreComments disabled because it's not supported in eslint 2.0 used by VS2017
+        "space-infix-ops": 1,
+		"object-curly-newline": [1, {"multiline": true}], //ensure consistent line breaks around objects
+		"array-bracket-newline": [1, "never"],//{"multiline": true}], //there should be no extra newlines around arrays
+		"array-bracket-spacing": 1, //there should be no extra spaces around arrays
+		"semi-style": [1, "last"], //F //semicolons should be at the end of statements
+		"semi-spacing": 1, //F //there should be no unnecessary spaces around semicolons
+		"no-whitespace-before-property": 1, //F //there should be no spaces before properties
+		"dot-location": [1, "property"], //F //dots should be on the same line as their property
+		"brace-style": 1, //the one true brace style formatting
+		"padded-blocks": [1, "never"], //F //block statement should not have blank lines at the start/end
+		"space-before-function-paren": [1, "never"], //F //there should never be spaces between the name of function and its params when defining a func
+		"func-call-spacing": 1, //F //there should be no spaces between a function name and its params
+		"space-before-blocks": 1, //F there should always be a space before a block of code
+		"keyword-spacing": 1, //F there should be a single space before and after a keyword
+        "space-unary-ops": [1, {"words": true, "nonwords": false}], //F //spacing rules for unary operators
+        "space-in-parens": [1, "never"], //F //there should not be spaces directly inside parentheses
+		"no-multi-spaces": 1, //F //you should not be sloppy with your spaces
+		"comma-style": 1, //F //comma formatting should be consistent 
+		"comma-dangle": 1, //F //there should be no dangling commas due to JSON spec
+		//this is partly overkill because in normal JS dangling commas are ok and can help code modification 
+		//but we don't want to accidentalyly send invalid JSON to the back end
+        "no-irregular-whitespace": 1, //irregular whitespace can cause issues with JS parsers
+    }
+}
