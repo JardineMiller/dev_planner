@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+    <e p="C:\Users\Kykoliko\.nuget\packages\nlog.config\4.5.11\contentFiles\any\any\nlog.config" t="Include" />
     <e p="C:\Users\Kykoliko\.Rider2018.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Kykoliko\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_dev_planner_backend.1591683310.00" t="ExcludeRecursive" />
     <e p="C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend" t="IncludeFlat">
       <e p="dev_planner_backend" t="IncludeRecursive">
+        <e p="appsettings.json" t="Include" />
+        <e p="appsettings.production.json" t="Include" />
         <e p="Bin" t="ExcludeRecursive" />
         <e p="Contexts" t="Include">
           <e p="ApplicationDBContext.cs" t="Include" />
@@ -33,6 +36,13 @@
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="Mail" t="Include">
+            <e p="CloudMailService.cs" t="Include" />
+            <e p="IMailService.cs" t="Include" />
+            <e p="LocalMailService.cs" t="Include" />
+          </e>
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="wwwroot" t="Include" />
