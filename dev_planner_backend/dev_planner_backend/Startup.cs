@@ -20,7 +20,7 @@ namespace dev_planner_backend
         {
             services.AddMvc();
 
-            const string connectionString = @"Server=(localdb)\mssqllocaldb;Database=DevPlannerDB;Trusted_Connection=True";
+            const string connectionString = @"Server=DESKTOP-CF4B233\SQLEXPRESS;Database=DevPlannerDB;Trusted_Connection=True";
             services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(connectionString));
         }
 

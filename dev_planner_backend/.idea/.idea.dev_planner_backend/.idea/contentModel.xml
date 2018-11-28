@@ -13,6 +13,11 @@
           <e p="ItemsController.cs" t="Include" />
         </e>
         <e p="dev_planner_backend.csproj" t="IncludeRecursive" />
+        <e p="Migrations" t="Include">
+          <e p="20181128200720_InitialMIgration.cs" t="Include" />
+          <e p="20181128200720_InitialMIgration.Designer.cs" t="Include" />
+          <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
+        </e>
         <e p="Models" t="Include">
           <e p="Item.cs" t="Include" />
           <e p="Person.cs" t="Include" />
