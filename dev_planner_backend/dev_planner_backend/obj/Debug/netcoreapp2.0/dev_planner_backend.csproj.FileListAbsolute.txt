@@ -9,3 +9,14 @@ C:\Users\jardi\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\D
 C:\Users\jardi\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.AssemblyInfo.cs
 C:\Users\jardi\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.dll
 C:\Users\jardi\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.pdb
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\bin\Debug\netcoreapp2.0\dev_planner_backend.deps.json
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\bin\Debug\netcoreapp2.0\dev_planner_backend.runtimeconfig.json
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\bin\Debug\netcoreapp2.0\dev_planner_backend.runtimeconfig.dev.json
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\bin\Debug\netcoreapp2.0\dev_planner_backend.dll
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\bin\Debug\netcoreapp2.0\dev_planner_backend.pdb
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.csprojAssemblyReference.cache
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.csproj.CoreCompileInputs.cache
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.AssemblyInfoInputs.cache
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.AssemblyInfo.cs
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.dll
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.pdb
