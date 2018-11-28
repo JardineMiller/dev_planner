@@ -20,3 +20,4 @@ C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\ob
 C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.AssemblyInfo.cs
 C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.dll
 C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\obj\Debug\netcoreapp2.0\dev_planner_backend.pdb
+C:\Users\Kykoliko\Desktop\dev_planner\dev_planner_backend\dev_planner_backend\bin\Debug\netcoreapp2.0\NLog.config

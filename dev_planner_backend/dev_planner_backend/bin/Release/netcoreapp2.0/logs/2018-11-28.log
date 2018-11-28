@@ -1,0 +1,94 @@
+2018-11-28 22:50:01.4285 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/  
+2018-11-28 22:50:01.6157 [INFO] Request finished in 196.5997ms 404 text/plain
+2018-11-28 22:50:07.7287 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/api/items  
+2018-11-28 22:50:07.8661 [INFO] Executing action method dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) with arguments ((null)) - ModelState is Valid
+2018-11-28 22:50:07.8690 [INFO] Mail from noreply@mycompany.com to developer@mycompany.com, with LocalMailService
+2018-11-28 22:50:07.8690 [INFO] Subject: Test Email
+2018-11-28 22:50:07.8690 [INFO] Message: Hitting Get Items API Route to validate that logging works correctly.
+2018-11-28 22:50:07.8690 [INFO] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-11-28 22:50:07.8690 [INFO] Executed action dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) in 115.3173ms
+2018-11-28 22:50:07.8856 [INFO] Request finished in 157.0242ms 200 
+2018-11-28 22:50:09.7636 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/api/items  
+2018-11-28 22:50:09.7636 [INFO] Executing action method dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) with arguments ((null)) - ModelState is Valid
+2018-11-28 22:50:09.7636 [INFO] Mail from noreply@mycompany.com to developer@mycompany.com, with LocalMailService
+2018-11-28 22:50:09.7636 [INFO] Subject: Test Email
+2018-11-28 22:50:09.7636 [INFO] Message: Hitting Get Items API Route to validate that logging works correctly.
+2018-11-28 22:50:09.7636 [INFO] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-11-28 22:50:09.7636 [INFO] Executed action dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) in 4.6218ms
+2018-11-28 22:50:09.7636 [INFO] Request finished in 8.4074ms 200 
+2018-11-28 22:50:11.5976 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/api/items  
+2018-11-28 22:50:11.5976 [INFO] Executing action method dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) with arguments ((null)) - ModelState is Valid
+2018-11-28 22:50:11.5976 [INFO] Mail from noreply@mycompany.com to developer@mycompany.com, with LocalMailService
+2018-11-28 22:50:11.6021 [INFO] Subject: Test Email
+2018-11-28 22:50:11.6021 [INFO] Message: Hitting Get Items API Route to validate that logging works correctly.
+2018-11-28 22:50:11.6021 [INFO] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-11-28 22:50:11.6021 [INFO] Executed action dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) in 5.3835ms
+2018-11-28 22:50:11.6021 [INFO] Request finished in 8.9643ms 200 
+2018-11-28 22:50:28.9334 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/api/items  
+2018-11-28 22:50:28.9334 [INFO] Executing action method dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) with arguments ((null)) - ModelState is Valid
+2018-11-28 22:50:28.9334 [INFO] Mail from noreply@mycompany.com to developer@mycompany.com, with LocalMailService
+2018-11-28 22:50:28.9334 [INFO] Subject: Test Email
+2018-11-28 22:50:28.9334 [INFO] Message: Hitting Get Items API Route to validate that logging works correctly.
+2018-11-28 22:50:28.9334 [INFO] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-11-28 22:50:28.9334 [INFO] Executed action dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) in 4.9184ms
+2018-11-28 22:50:28.9334 [INFO] Request finished in 7.8439ms 200 
+2018-11-28 22:54:13.4456 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/  
+2018-11-28 22:54:13.6890 [INFO] Request finished in 252.1236ms 404 text/plain
+2018-11-28 22:54:18.0567 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/api/items  
+2018-11-28 22:54:18.2101 [INFO] Executing action method dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) with arguments ((null)) - ModelState is Valid
+2018-11-28 22:54:18.2128 [INFO] Mail from noreply@mycompany.com to developer@mycompany.com, with LocalMailService
+2018-11-28 22:54:18.2128 [INFO] Subject: Test Email
+2018-11-28 22:54:18.2128 [INFO] Message: Hitting Get Items API Route to validate that logging works correctly.
+2018-11-28 22:54:18.2128 [INFO] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-11-28 22:54:18.2128 [INFO] Executed action dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) in 113.5634ms
+2018-11-28 22:54:18.2128 [INFO] Request finished in 170.4167ms 200 
+2018-11-28 22:54:19.1461 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/api/items  
+2018-11-28 22:54:19.1461 [INFO] Executing action method dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) with arguments ((null)) - ModelState is Valid
+2018-11-28 22:54:19.1502 [INFO] Mail from noreply@mycompany.com to developer@mycompany.com, with LocalMailService
+2018-11-28 22:54:19.1502 [INFO] Subject: Test Email
+2018-11-28 22:54:19.1502 [INFO] Message: Hitting Get Items API Route to validate that logging works correctly.
+2018-11-28 22:54:19.1502 [INFO] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-11-28 22:54:19.1502 [INFO] Executed action dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) in 4.6944ms
+2018-11-28 22:54:19.1502 [INFO] Request finished in 7.5849ms 200 
+2018-11-28 22:54:23.7758 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/api/items  
+2018-11-28 22:54:23.7758 [INFO] Executing action method dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) with arguments ((null)) - ModelState is Valid
+2018-11-28 22:54:23.7758 [INFO] Mail from noreply@mycompany.com to developer@mycompany.com, with LocalMailService
+2018-11-28 22:54:23.7758 [INFO] Subject: Test Email
+2018-11-28 22:54:23.7758 [INFO] Message: Hitting Get Items API Route to validate that logging works correctly.
+2018-11-28 22:54:23.7758 [INFO] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-11-28 22:54:23.7758 [INFO] Executed action dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) in 4.6497ms
+2018-11-28 22:54:23.7758 [INFO] Request finished in 7.4175ms 200 
+2018-11-28 22:54:24.4095 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/api/items  
+2018-11-28 22:54:24.4095 [INFO] Executing action method dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) with arguments ((null)) - ModelState is Valid
+2018-11-28 22:54:24.4095 [INFO] Mail from noreply@mycompany.com to developer@mycompany.com, with LocalMailService
+2018-11-28 22:54:24.4095 [INFO] Subject: Test Email
+2018-11-28 22:54:24.4095 [INFO] Message: Hitting Get Items API Route to validate that logging works correctly.
+2018-11-28 22:54:24.4095 [INFO] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-11-28 22:54:24.4155 [INFO] Executed action dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) in 4.6177ms
+2018-11-28 22:54:24.4155 [INFO] Request finished in 6.9159ms 200 
+2018-11-28 22:54:43.4196 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/  
+2018-11-28 22:54:43.5661 [INFO] Request finished in 152.8729ms 404 text/plain
+2018-11-28 22:54:47.9287 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/api/items  
+2018-11-28 22:54:48.0738 [INFO] Executing action method dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) with arguments ((null)) - ModelState is Valid
+2018-11-28 22:54:48.0738 [INFO] Mail from noreply@mycompany.com to developer@mycompany.com, with LocalMailService
+2018-11-28 22:54:48.0738 [INFO] Subject: Test Email
+2018-11-28 22:54:48.0738 [INFO] Message: Hitting Get Items API Route to validate that logging works correctly.
+2018-11-28 22:54:48.0738 [INFO] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-11-28 22:54:48.0882 [INFO] Executed action dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) in 119.8666ms
+2018-11-28 22:54:48.0882 [INFO] Request finished in 162.837ms 200 
+2018-11-28 22:54:54.2572 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/api/items  
+2018-11-28 22:54:54.2604 [INFO] Executing action method dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) with arguments ((null)) - ModelState is Valid
+2018-11-28 22:54:54.2604 [INFO] Mail from noreply@mycompany.com to developer@mycompany.com, with LocalMailService
+2018-11-28 22:54:54.2604 [INFO] Subject: Test Email
+2018-11-28 22:54:54.2604 [INFO] Message: Hitting Get Items API Route to validate that logging works correctly.
+2018-11-28 22:54:54.2604 [INFO] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-11-28 22:54:54.2604 [INFO] Executed action dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) in 5.038ms
+2018-11-28 22:54:54.2604 [INFO] Request finished in 8.1802ms 200 
+2018-11-28 22:54:54.9369 [INFO] Request starting HTTP/1.1 GET http://localhost:52151/api/items  
+2018-11-28 22:54:54.9369 [INFO] Executing action method dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) with arguments ((null)) - ModelState is Valid
+2018-11-28 22:54:54.9369 [INFO] Mail from noreply@mycompany.com to developer@mycompany.com, with LocalMailService
+2018-11-28 22:54:54.9369 [INFO] Subject: Test Email
+2018-11-28 22:54:54.9369 [INFO] Message: Hitting Get Items API Route to validate that logging works correctly.
+2018-11-28 22:54:54.9369 [INFO] Executing HttpStatusCodeResult, setting HTTP status code 200
+2018-11-28 22:54:54.9369 [INFO] Executed action dev_planner_backend.Controllers.ItemsController.TestDatabase (dev_planner_backend) in 5.0864ms
+2018-11-28 22:54:54.9369 [INFO] Request finished in 7.7425ms 200 
