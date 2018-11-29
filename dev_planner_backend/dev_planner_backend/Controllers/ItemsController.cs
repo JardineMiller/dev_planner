@@ -29,8 +29,6 @@ namespace dev_planner_backend.Controllers
         [HttpGet]
         public IActionResult TestDatabase()
         {
-            //logger.LogInformation("Hitting Get Items API Route to validate that logging works correctly.");
-            mailService.Send("Test Email", "Hitting Get Items API Route to validate that logging works correctly.");
             return Ok();
         }
         

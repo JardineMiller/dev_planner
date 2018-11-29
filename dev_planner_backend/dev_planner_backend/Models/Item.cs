@@ -25,5 +25,11 @@ namespace dev_planner_backend.Models
 
         [JsonIgnore]
         public State State { get; set; }
+        
+        [ForeignKey("Owner")]
+        public int? PersonId { get; set; }
+        
+        [JsonIgnore]
+        public Person Owner { get; set; }
     }
 }
