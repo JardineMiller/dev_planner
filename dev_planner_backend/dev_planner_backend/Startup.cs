@@ -38,8 +38,7 @@ namespace dev_planner_backend
             var serviceProvider = services.BuildServiceProvider();
             var connection = serviceProvider.GetService<IOptions<DatabaseConfig>>().Value.Connection;
             services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(connection));
-            services.AddScoped<DatabaseSeeder>();
-
+            services.AddScoped<ISeeder, DatabaseSeeder>();
 
             // Services
             services.AddMvc();
@@ -47,7 +46,7 @@ namespace dev_planner_backend
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, DatabaseSeeder seeder)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ISeeder seeder)
         {
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();

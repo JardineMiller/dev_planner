@@ -10,10 +10,10 @@ using NLog;
 
 namespace dev_planner_backend
 {
-    public class DatabaseSeeder
+    public class DatabaseSeeder : ISeeder
     {
-        private ILogger<DatabaseSeeder> logger;
-        private ApplicationDbContext cnt;
+        private readonly ILogger<DatabaseSeeder> logger;
+        private readonly ApplicationDbContext cnt;
         
         public DatabaseSeeder(ILogger<DatabaseSeeder> logger, ApplicationDbContext cnt)
         {
