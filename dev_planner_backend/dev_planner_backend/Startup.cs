@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using dev_planner_backend.Configuration;
 using dev_planner_backend.Contexts;
 using dev_planner_backend.Services;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using NLog.Extensions.Logging;
 
 namespace dev_planner_backend
@@ -28,10 +30,17 @@ namespace dev_planner_backend
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Startup.Config["connectionStrings:DBConnectionString"];
+            // Configs
+            services.Configure<DatabaseConfig>(Config.GetSection("database"));
+            services.Configure<MailServiceConfig>(Config.GetSection("mailSettings"));
 
+            // Database
+            var serviceProvider = services.BuildServiceProvider();
+            var connection = serviceProvider.GetService<IOptions<DatabaseConfig>>().Value.Connection;
+            services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(connection));
+
+            // Services
             services.AddMvc();
-            services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(connectionString));
             services.AddTransient<IMailService, LocalMailService>();
         }
 
