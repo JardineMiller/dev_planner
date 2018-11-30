@@ -29,6 +29,7 @@ namespace dev_planner_backend.Controllers
         [HttpGet]
         public IActionResult TestDatabase()
         {
+            mailService.Send("Test Email", "This is another test email to indicate that stuff is actually somehow working.");
             return Ok();
         }
         
