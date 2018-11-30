@@ -34,9 +34,6 @@ namespace dev_planner_backend
             services.Configure<DatabaseConfig>(Config.GetSection("database"));
             services.Configure<MailSettings>(Config.GetSection("mailSettings"));
 
-            // Settings
-            services.AddTransient<MailSettings>();
-
             // Database
             var serviceProvider = services.BuildServiceProvider();
             var connection = serviceProvider.GetService<IOptions<DatabaseConfig>>().Value.Connection;
@@ -66,7 +63,6 @@ namespace dev_planner_backend
             }
 
             seeder.SeedAll();
-
             app.UseStatusCodePages();
             app.UseMvc();
         }

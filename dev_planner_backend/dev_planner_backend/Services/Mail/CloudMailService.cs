@@ -1,5 +1,6 @@
 using dev_planner_backend.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using NLog;
 using ILogger = NLog.ILogger;
 
@@ -12,11 +13,11 @@ namespace dev_planner_backend.Services
         private readonly string mailTo;
         private readonly string mailFrom;
         
-        public CloudMailService(ILogger<CloudMailService> logger, MailSettings mailSettings)
+        public CloudMailService(ILogger<CloudMailService> logger, IOptions<MailSettings> mailSettings)
         {
             this.logger = logger;
-            this.mailTo = mailSettings.MailTo;
-            this.mailFrom = mailSettings.MailTo;
+            this.mailTo = mailSettings.Value.MailTo;
+            this.mailFrom = mailSettings.Value.MailFrom;
         }
         
         public void Send(string subject, string message) 
