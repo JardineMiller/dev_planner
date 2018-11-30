@@ -63,7 +63,6 @@ namespace dev_planner_backend
             }
 
             seeder.SeedAll();
-
             app.UseStatusCodePages();
             app.UseMvc();
         }
