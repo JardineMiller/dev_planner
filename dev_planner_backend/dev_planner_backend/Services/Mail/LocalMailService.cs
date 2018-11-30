@@ -17,7 +17,7 @@ namespace dev_planner_backend.Services
         {
             this.logger = logger;
             this.mailTo = mailSettings.Value.MailTo;
-            this.mailFrom = mailSettings.Value.MailTo;
+            this.mailFrom = mailSettings.Value.MailFrom;
         }
         
         public void Send(string subject, string message) 
