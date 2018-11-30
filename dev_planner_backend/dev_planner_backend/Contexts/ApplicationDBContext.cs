@@ -12,7 +12,7 @@ namespace dev_planner_backend.Contexts
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            
+            Database.EnsureCreated();
         }
 
         public DbSet<Item> Items { get; set; }
