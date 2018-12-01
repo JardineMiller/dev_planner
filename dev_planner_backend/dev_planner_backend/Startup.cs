@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using dev_planner_backend.Configuration;
 using dev_planner_backend.Contexts;
 using dev_planner_backend.Services;
+using dev_planner_backend.Services.Mail;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

@@ -1,4 +1,4 @@
-namespace dev_planner_backend.Services
+namespace dev_planner_backend.Services.Mail
 {
     public interface IMailService
     {

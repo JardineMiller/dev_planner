@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using dev_planner_backend.Contexts;
 using dev_planner_backend.Services;
+using dev_planner_backend.Services.Mail;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

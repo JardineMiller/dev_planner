@@ -1,10 +1,8 @@
 using dev_planner_backend.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using NLog;
-using ILogger = NLog.ILogger;
 
-namespace dev_planner_backend.Services
+namespace dev_planner_backend.Services.Mail
 {
     public class CloudMailService : IMailService
     {
