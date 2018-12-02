@@ -74,11 +74,11 @@ namespace dev_planner_backend
             {
                 var items = new List<Item>()
                 {
-                    new Item() {Name = "Finish Dev Planner App", StateId = 2, PersonId = 1},
-                    new Item() {Name = "Seed Database", StateId = 2, PersonId = 1},
-                    new Item() {Name = "Work out what to do next", StateId = 1, PersonId = 1},
-                    new Item() {Name = "Eat loads of food", StateId = 4, PersonId = 1},
-                    new Item() {Name = "Kick ass at UCD", StateId = 4, PersonId = 2},
+                    new Item() {Name = "Finish Dev Planner App", StateId = 2, OwnerId = 1},
+                    new Item() {Name = "Seed Database", StateId = 2, OwnerId = 1},
+                    new Item() {Name = "Work out what to do next", StateId = 1, OwnerId = 1},
+                    new Item() {Name = "Eat loads of food", StateId = 4, OwnerId = 1},
+                    new Item() {Name = "Kick ass at UCD", StateId = 4, OwnerId = 2},
                 };
 
                 cnt.Items.AddRange(items);
