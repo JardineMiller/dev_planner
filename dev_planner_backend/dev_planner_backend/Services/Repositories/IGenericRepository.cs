@@ -50,7 +50,7 @@ namespace dev_planner_backend.Services.Repositories
         /// Insert entity to db
         /// </summary>
         /// <param name="entity"></param>
-        void Insert(T entity);
+        T Insert(T entity);
  
         /// <summary>
         /// Update entity in db
