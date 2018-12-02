@@ -21,7 +21,7 @@ namespace dev_planner_backend.Models
         public string Name { get; set; }
         
         /// <summary>
-        /// Email fo the person
+        /// Email of the person
         /// </summary>
         [Required] [MaxLength(100)]
         public string Email { get; set; }
