@@ -27,13 +27,13 @@ namespace dev_planner_backend.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<int?>("PersonId");
+                    b.Property<int?>("OwnerId");
 
                     b.Property<int>("StateId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PersonId");
+                    b.HasIndex("OwnerId");
 
                     b.HasIndex("StateId");
 
@@ -75,7 +75,7 @@ namespace dev_planner_backend.Migrations
                 {
                     b.HasOne("dev_planner_backend.Models.Person", "Owner")
                         .WithMany()
-                        .HasForeignKey("PersonId");
+                        .HasForeignKey("OwnerId");
 
                     b.HasOne("dev_planner_backend.Models.State", "State")
                         .WithMany()
