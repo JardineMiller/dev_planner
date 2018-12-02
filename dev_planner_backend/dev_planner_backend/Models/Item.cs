@@ -35,7 +35,6 @@ namespace dev_planner_backend.Models
         /// <summary>
         /// The current state of the item
         /// </summary>
-        [JsonIgnore]
         public State State { get; set; }
         
         
@@ -43,12 +42,11 @@ namespace dev_planner_backend.Models
         /// The id of the current owner of the item
         /// </summary>
         [ForeignKey("Owner")]
-        public int? PersonId { get; set; }
+        public int? OwnerId { get; set; }
         
         /// <summary>
         /// The current owner if the item
         /// </summary>
-        [JsonIgnore]
         public Person Owner { get; set; }
     }
 }
