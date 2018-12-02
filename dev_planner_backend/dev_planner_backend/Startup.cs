@@ -41,7 +41,7 @@ namespace dev_planner_backend
             var connection = serviceProvider.GetService<IOptions<DatabaseConfig>>().Value.Connection;
             services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(connection));
             services.AddScoped<ISeeder, DatabaseSeeder>();
-            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             // Services
             services.AddMvc();
