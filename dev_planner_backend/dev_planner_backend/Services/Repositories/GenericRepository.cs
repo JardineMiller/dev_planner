@@ -63,16 +63,16 @@ namespace dev_planner_backend.Services.Repositories
             return query.FirstOrDefault(filter);
         }
 
-        public virtual void Insert(T entity)
+        public virtual T Insert(T entity)
         {
             dbSet.Add(entity);
             cnt.SaveChanges();
+            return entity;
         }
 
         public virtual void Update(T entity)
         {
-            dbSet.Attach(entity);
-            cnt.Entry(entity).State = EntityState.Modified;
+            dbSet.Update(entity);
             cnt.SaveChanges();
         }
  
