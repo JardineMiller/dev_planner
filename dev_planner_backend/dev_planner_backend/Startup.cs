@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using dev_planner_backend.Configuration;
 using dev_planner_backend.Contexts;
 using dev_planner_backend.Services;
+using dev_planner_backend.Services.Mail;
+using dev_planner_backend.Services.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -39,6 +41,7 @@ namespace dev_planner_backend
             var connection = serviceProvider.GetService<IOptions<DatabaseConfig>>().Value.Connection;
             services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(connection));
             services.AddScoped<ISeeder, DatabaseSeeder>();
+            services.AddScoped<IItemRepository, ItemRepository>();
 
             // Services
             services.AddMvc();

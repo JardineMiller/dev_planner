@@ -40,10 +40,10 @@ namespace dev_planner_backend
             {
                 var people = new List<Person>()
                 {
-                    new Person() {Name = "Jardine"},
-                    new Person() {Name = "Julia"},
-                    new Person() {Name = "Matt"},
-                    new Person() {Name = "Alison"},
+                    new Person() {Name = "Jardine", Email = "jardine@emailprovider.com"},
+                    new Person() {Name = "Julia", Email = "julia@emailprovider.com"},
+                    new Person() {Name = "Matt", Email = "matt@emailprovider.com"},
+                    new Person() {Name = "Alison", Email = "alison@emailprovider.com"},
                 };
 
                 cnt.People.AddRange(people);
