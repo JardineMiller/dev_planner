@@ -7,6 +7,7 @@ using dev_planner_backend.Models;
 using dev_planner_backend.Services;
 using dev_planner_backend.Services.Mail;
 using dev_planner_backend.Services.Repositories;
+using dev_planner_backend.Service_Layer.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,10 @@ namespace dev_planner_backend.Controllers
                 .Include(i => i.Owner);
 
             return Ok(items);
+
+            // TODO Why doesn't this work? :(
+            // var cmd = new GetItemsByNameQuery();
+            // var result = cmd.Run();
         }
 
         [HttpGet("{itemId}")]
