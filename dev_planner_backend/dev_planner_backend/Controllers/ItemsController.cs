@@ -74,38 +74,6 @@ namespace dev_planner_backend.Controllers
             return NotFound();
         }
 
-        [HttpGet("{itemId}/state")]
-        public IActionResult GetItemState(int itemId)
-        {
-            var item = repo.Query(i => i.Id == itemId)
-                .Include(i => i.State)
-                .FirstOrDefault();
-
-            if (item != null)
-            {
-                return Ok(item.State);
-            }
-
-            logger.LogWarning($"Item with ID: {itemId} not found in the database.");
-            return NotFound();
-        }
-
-        [HttpGet("{itemId}/owner")]
-        public IActionResult GetItemOwner(int itemId)
-        {
-            var item = repo.Query(i => i.Id == itemId)
-                .Include(i => i.Owner)
-                .FirstOrDefault();
-
-            if (item != null)
-            {
-                return Ok(item.Owner);
-            }
-
-            logger.LogWarning($"Item with ID: {itemId} not found in the database.");
-            return NotFound();
-        }
-
         [HttpPost]
         public IActionResult InsertItem([FromBody] Item item)
         {
@@ -125,7 +93,7 @@ namespace dev_planner_backend.Controllers
         public IActionResult UpdateItem(int itemId, [FromBody] Item item)
         {
             if (itemId != item.Id) return BadRequest("The ID in the URL does not match the ID of the object provided.");
-            
+
             try
             {
                 repo.Update(item);
