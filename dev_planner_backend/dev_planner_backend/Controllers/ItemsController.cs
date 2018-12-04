@@ -23,10 +23,13 @@ namespace dev_planner_backend.Controllers
         private IGenericRepository<Item> repo;
         private readonly ILogger<ItemsController> logger;
 
-        public ItemsController(IGenericRepository<Item> repo, ILogger<ItemsController> logger)
+        private GetItemsByNameQueryHandler itemsByNameQueryHandler;
+
+        public ItemsController(IGenericRepository<Item> repo, ILogger<ItemsController> logger, GetItemsByNameQueryHandler itemsByNameQueryHandler)
         {
             this.repo = repo;
             this.logger = logger;
+            this.itemsByNameQueryHandler = itemsByNameQueryHandler;
         }
 
         [HttpGet]
@@ -42,11 +45,10 @@ namespace dev_planner_backend.Controllers
                 .Include(i => i.State)
                 .Include(i => i.Owner);
 
-            return Ok(items);
+            var query = new GetItemsByNameQuery();
+            var result = itemsByNameQueryHandler.Run(query);
 
-            // TODO Why doesn't this work? :(
-            // var cmd = new GetItemsByNameQuery();
-            // var result = cmd.Run();
+            return Ok(result);
         }
 
         [HttpGet("{itemId}")]
