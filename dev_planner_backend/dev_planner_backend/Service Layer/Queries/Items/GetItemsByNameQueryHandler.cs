@@ -38,7 +38,7 @@ namespace dev_planner_backend.Service_Layer.Queries
                 else
                 {
                     // TODO: This is to just demonstrate/test the functionality of Query classes - I know the logic below doesn't make much sense, but work with me here.
-                    logger.LogWarning($"Person with the name {item.Name} already found in the dictionary, adding the person that was created last.");
+                    logger.LogWarning($"Person with the name [{item.Name}] already found in the dictionary, adding the person that was created last.");
                     if (itemsByName[item.Name].Id < item.Id)
                     {
                         itemsByName[item.Name] = item;
@@ -49,7 +49,7 @@ namespace dev_planner_backend.Service_Layer.Queries
             return itemsByName;
         }
 
-        private void initialiseContext(List<int> itemIds)
+        private void initialiseContext(ICollection<int> itemIds)
         {
             items = itemIds != null ? 
                 repo.Query(p => itemIds.Contains(p.Id)).ToList() : repo.Get();
