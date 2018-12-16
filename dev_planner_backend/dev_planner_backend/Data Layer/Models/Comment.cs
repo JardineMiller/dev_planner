@@ -10,6 +10,9 @@ namespace dev_planner_backend.Models
     {
         [Key] 
         public int Id { get; set; }
+        
+        [MaxLength(300)]
+        public string Content { get; set; }
 
         [ForeignKey("Author")]
         public int AuthorId { get; set; }
@@ -18,14 +21,6 @@ namespace dev_planner_backend.Models
 
         public DateTimeOffset PublishDate { get; set; }        
         
-        public List<Comment> Replies { get; set; }
-
-        [NotMapped]
-        public List<int> ReplyIds
-        {
-            get { return this.Replies.Select(r => r.Id).ToList(); }
-            set {}
-        }
-
+        public List<Comment> Replies { get; set; } = new List<Comment>();
     }
 }

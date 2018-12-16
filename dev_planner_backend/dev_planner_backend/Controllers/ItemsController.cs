@@ -25,13 +25,11 @@ namespace dev_planner_backend.Controllers
         private readonly IGenericRepository<Item> repo;
         private readonly ILogger<ItemsController> logger;
 
-        private readonly ItemQueryHandlers queries;
-
-        public ItemsController(IGenericRepository<Item> repo, ILogger<ItemsController> logger, ItemQueryHandlers queries)
+        public ItemsController(IGenericRepository<Item> repo, ILogger<ItemsController> logger)
         {
             this.repo = repo;
             this.logger = logger;
-            this.queries = queries;        }
+        }
 
         [HttpGet]
         public IActionResult GetItems()
@@ -45,7 +43,9 @@ namespace dev_planner_backend.Controllers
             var items = repo.Query()
                 .Include(i => i.State)
                 .Include(i => i.Owner)
-                .Include(i => i.Comments);
+                .Include(i => i.Comments)
+                .ThenInclude(c => c.Replies)
+                .ThenInclude(c => c.Author);
 
             return Ok(items);
         }
@@ -70,6 +70,8 @@ namespace dev_planner_backend.Controllers
                 .Include(i => i.State)
                 .Include(i => i.Owner)
                 .Include(i => i.Comments)
+                .ThenInclude(c => c.Replies)
+                .ThenInclude(c => c.Author)
                 .FirstOrDefault();
 
             if (item != null)
