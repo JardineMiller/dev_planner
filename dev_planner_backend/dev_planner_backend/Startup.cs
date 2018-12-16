@@ -7,6 +7,8 @@ using dev_planner_backend.Contexts;
 using dev_planner_backend.Services;
 using dev_planner_backend.Services.Mail;
 using dev_planner_backend.Services.Repositories;
+using dev_planner_backend.Service_Layer;
+using dev_planner_backend.Service_Layer.Commands._1._Command_Handlers;
 using dev_planner_backend.Service_Layer.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -49,7 +51,8 @@ namespace dev_planner_backend
             services.AddTransient<IMailService, LocalMailService>();
 
             // Handlers
-            services.AddTransient<GetItemsByNameQueryHandler>();
+            services.AddTransient<ItemQueryHandlers>();
+            services.AddTransient<ItemCommandHandlers>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
