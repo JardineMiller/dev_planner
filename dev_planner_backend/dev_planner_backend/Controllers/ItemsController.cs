@@ -44,7 +44,8 @@ namespace dev_planner_backend.Controllers
         {
             var items = repo.Query()
                 .Include(i => i.State)
-                .Include(i => i.Owner);
+                .Include(i => i.Owner)
+                .Include(i => i.Comments);
 
             return Ok(items);
         }
@@ -68,6 +69,7 @@ namespace dev_planner_backend.Controllers
             var item = repo.Query(i => i.Id == itemId)
                 .Include(i => i.State)
                 .Include(i => i.Owner)
+                .Include(i => i.Comments)
                 .FirstOrDefault();
 
             if (item != null)
