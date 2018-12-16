@@ -20,6 +20,7 @@ namespace dev_planner_backend.Models
         
         public List<Comment> Replies { get; set; }
 
+        [NotMapped]
         public List<int> ReplyIds
         {
             get { return this.Replies.Select(r => r.Id).ToList(); }
