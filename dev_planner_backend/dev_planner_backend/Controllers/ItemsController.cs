@@ -10,6 +10,7 @@ using dev_planner_backend.Services.Repositories;
 using dev_planner_backend.Service_Layer;
 using dev_planner_backend.Service_Layer.Commands._1._Command_Handlers;
 using dev_planner_backend.Service_Layer.Queries;
+using dev_planner_backend.Service_Layer.Queries.Handlers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,63 +25,55 @@ namespace dev_planner_backend.Controllers
     {
         private readonly IGenericRepository<Item> repo;
         private readonly ILogger<ItemsController> logger;
+        private ItemQueryHandlers queries;
 
-        public ItemsController(IGenericRepository<Item> repo, ILogger<ItemsController> logger)
+        public ItemsController(IGenericRepository<Item> repo, ILogger<ItemsController> logger, ItemQueryHandlers queries)
         {
             this.repo = repo;
             this.logger = logger;
+            this.queries = queries;
         }
 
         [HttpGet]
-        public IActionResult GetItems()
+        public IActionResult GetItems([FromQuery] bool full)
         {
-            return Ok(repo.Get());
-        }
+            if (!full)
+            {
+                return Ok(repo.Get());
+            }
+            
+            var query = new GetFullItemsQuery();
+            var result = queries.GetFullItems.Run(query);
 
-        [HttpGet("full")]
-        public IActionResult GetFullItems()
-        {
-            var items = repo.Query()
-                .Include(i => i.State)
-                .Include(i => i.Owner)
-                .Include(i => i.Comments)
-                .ThenInclude(c => c.Replies)
-                .ThenInclude(c => c.Author);
-
-            return Ok(items);
+            return Ok(result);
         }
 
         [HttpGet("{itemId}")]
-        public IActionResult GetItem(int itemId)
+        public IActionResult GetItem(int itemId, [FromQuery] bool full)
         {
-            var item = repo.Get(i => i.Id == itemId).FirstOrDefault();
-            if (item != null)
+            if (!full)
             {
-                return Ok(item);
+                var item = repo.Get(i => i.Id == itemId).FirstOrDefault();
+                if (item != null)
+                {
+                    return Ok(item);
+                }
+
+                logger.LogWarning($"Item with ID: {itemId} not found in the database.");
+                return NotFound();  
+            }
+
+            var query = new GetFullItemQuery(itemId);
+            var result = queries.GetFullItems.Run(query);
+
+            if (result != null)
+            {
+                return Ok(result);
             }
 
             logger.LogWarning($"Item with ID: {itemId} not found in the database.");
             return NotFound();
-        }
-
-        [HttpGet("{itemId}/full")]
-        public IActionResult GetFullItem(int itemId)
-        {
-            var item = repo.Query(i => i.Id == itemId)
-                .Include(i => i.State)
-                .Include(i => i.Owner)
-                .Include(i => i.Comments)
-                .ThenInclude(c => c.Replies)
-                .ThenInclude(c => c.Author)
-                .FirstOrDefault();
-
-            if (item != null)
-            {
-                return Ok(item);
-            }
-
-            logger.LogWarning($"Item with ID: {itemId} not found in the database.");
-            return NotFound();
+            
         }
 
         [HttpPost]

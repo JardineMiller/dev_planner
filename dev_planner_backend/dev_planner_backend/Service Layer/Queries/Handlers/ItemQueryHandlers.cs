@@ -1,16 +1,14 @@
-using dev_planner_backend.Service_Layer.Queries;
-
-namespace dev_planner_backend.Service_Layer
+namespace dev_planner_backend.Service_Layer.Queries.Handlers
 {
     public class ItemQueryHandlers
     {
-        public readonly GetItemsByNameQueryHandler GetItemsByName;
         public readonly GetFullItemsQueryHandler GetFullItems;
+        public readonly GetItemsByNameQueryHandler GetItemsNyName;
         
-        public ItemQueryHandlers(GetItemsByNameQueryHandler getItemsByName, GetFullItemsQueryHandler getFullItems)
+        public ItemQueryHandlers(GetFullItemsQueryHandler getFullItems, GetItemsByNameQueryHandler getItemsNyName)
         {
-            GetItemsByName = getItemsByName;
             GetFullItems = getFullItems;
+            GetItemsNyName = getItemsNyName;
         }
         
     }
