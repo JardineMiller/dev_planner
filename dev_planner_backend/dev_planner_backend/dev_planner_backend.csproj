@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Data Layer" />
-    <Folder Include="Service Layer\Commands" />
+    <Folder Include="Service Layer\Commands\Items" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
