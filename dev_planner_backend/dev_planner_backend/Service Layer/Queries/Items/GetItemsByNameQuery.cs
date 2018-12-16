@@ -7,9 +7,9 @@ namespace dev_planner_backend.Service_Layer.Queries
 {
     public class GetItemsByNameQuery
     {
-        public readonly List<int> ItemIds;
+        public readonly HashSet<int> ItemIds;
 
-        public GetItemsByNameQuery(List<int> itemIds = null)
+        public GetItemsByNameQuery(HashSet<int> itemIds = null)
         {
             this.ItemIds = itemIds;
         }
