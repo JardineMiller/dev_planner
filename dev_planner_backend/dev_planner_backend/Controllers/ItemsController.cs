@@ -7,6 +7,8 @@ using dev_planner_backend.Models;
 using dev_planner_backend.Services;
 using dev_planner_backend.Services.Mail;
 using dev_planner_backend.Services.Repositories;
+using dev_planner_backend.Service_Layer;
+using dev_planner_backend.Service_Layer.Commands._1._Command_Handlers;
 using dev_planner_backend.Service_Layer.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,14 +22,16 @@ namespace dev_planner_backend.Controllers
     [Route("api/items")]
     public class ItemsController : Controller
     {
-        private IGenericRepository<Item> repo;
+        private readonly IGenericRepository<Item> repo;
         private readonly ILogger<ItemsController> logger;
 
-        public ItemsController(IGenericRepository<Item> repo, ILogger<ItemsController> logger)
+        private readonly ItemQueryHandlers queries;
+
+        public ItemsController(IGenericRepository<Item> repo, ILogger<ItemsController> logger, ItemQueryHandlers queries)
         {
             this.repo = repo;
             this.logger = logger;
-        }
+            this.queries = queries;        }
 
         [HttpGet]
         public IActionResult GetItems()
@@ -40,13 +44,10 @@ namespace dev_planner_backend.Controllers
         {
             var items = repo.Query()
                 .Include(i => i.State)
-                .Include(i => i.Owner);
+                .Include(i => i.Owner)
+                .Include(i => i.Comments);
 
             return Ok(items);
-
-            // TODO Why doesn't this work? :(
-            // var cmd = new GetItemsByNameQuery();
-            // var result = cmd.Run();
         }
 
         [HttpGet("{itemId}")]
@@ -68,6 +69,7 @@ namespace dev_planner_backend.Controllers
             var item = repo.Query(i => i.Id == itemId)
                 .Include(i => i.State)
                 .Include(i => i.Owner)
+                .Include(i => i.Comments)
                 .FirstOrDefault();
 
             if (item != null)
@@ -107,7 +109,7 @@ namespace dev_planner_backend.Controllers
             catch (Exception e)
             {
                 logger.LogError(e.Message);
-                return StatusCode(500, $"Something went wrong and your create request could not be processed. Please try again.");
+                return StatusCode(500, $"Something went wrong and your update request could not be processed. Please try again.");
             }
         }
 
@@ -122,7 +124,7 @@ namespace dev_planner_backend.Controllers
             catch (Exception e)
             {
                 logger.LogError(e.Message);
-                return StatusCode(500, $"Something went wrong and your create request could not be processed. Please try again.");
+                return StatusCode(500, $"Something went wrong and your delete request could not be processed. Please try again.");
             }
         }
     }

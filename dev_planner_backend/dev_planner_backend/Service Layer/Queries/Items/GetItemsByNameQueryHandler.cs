@@ -8,24 +8,22 @@ using Microsoft.Extensions.Logging;
 
 namespace dev_planner_backend.Service_Layer.Queries
 {
-    public class GetItemsByNameQuery
+    public class GetItemsByNameQueryHandler
     {
         private IGenericRepository<Item> repo;
-        private readonly ILogger<GetItemsByNameQuery> logger;
+        private readonly ILogger<GetItemsByNameQueryHandler> logger;
 
-        private readonly List<int> itemIds;
         private List<Item> items;
 
-        public GetItemsByNameQuery(IGenericRepository<Item> repo, ILogger<GetItemsByNameQuery> logger, List<int> itemIds = null)
+        public GetItemsByNameQueryHandler(IGenericRepository<Item> repo, ILogger<GetItemsByNameQueryHandler> logger)
         {
             this.repo = repo;
             this.logger = logger;
-            this.itemIds = itemIds;
         }
 
-        public Dictionary<string, Item> Run()
+        public Dictionary<string, Item> Run(GetItemsByNameQuery query)
         {
-            initialiseContext();
+            initialiseContext(query.ItemIds);
 
             var itemsByName = new Dictionary<string, Item>();
 
@@ -40,7 +38,7 @@ namespace dev_planner_backend.Service_Layer.Queries
                 else
                 {
                     // TODO: This is to just demonstrate/test the functionality of Query classes - I know the logic below doesn't make much sense, but work with me here.
-                    logger.LogWarning($"Person with the name {item.Name} already found in the dictionary, adding the person that was created last.");
+                    logger.LogWarning($"Person with the name [{item.Name}] already found in the dictionary, adding the person that was created last.");
                     if (itemsByName[item.Name].Id < item.Id)
                     {
                         itemsByName[item.Name] = item;
@@ -51,7 +49,7 @@ namespace dev_planner_backend.Service_Layer.Queries
             return itemsByName;
         }
 
-        private void initialiseContext()
+        private void initialiseContext(ICollection<int> itemIds)
         {
             items = itemIds != null ? 
                 repo.Query(p => itemIds.Contains(p.Id)).ToList() : repo.Get();

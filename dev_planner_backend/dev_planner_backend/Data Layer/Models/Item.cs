@@ -48,5 +48,16 @@ namespace dev_planner_backend.Models
         /// The current owner if the item
         /// </summary>
         public Person Owner { get; set; }
+        
+        /// <summary>
+        /// List of comments for the item
+        /// </summary>
+        public List<Comment> Comments { get; set; }
+
+        public List<int> CommentIds
+        {
+            get { return Comments.Select(c => c.Id).ToList(); }
+            set { }
+        }
     }
 }
