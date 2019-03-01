@@ -1,7 +1,6 @@
 ﻿using dev_planner_backend.Configuration;
 using dev_planner_backend.Contexts;
 using dev_planner_backend.Services.Mail;
-using dev_planner_backend.Services.Repositories;
 using dev_planner_backend.Service_Layer.Commands._1._Command_Handlers;
 using dev_planner_backend.Service_Layer.Queries;
 using dev_planner_backend.Service_Layer.Queries.Handlers;
@@ -39,7 +38,6 @@ namespace dev_planner_backend
             var connection = serviceProvider.GetService<IOptions<DatabaseConfig>>().Value.Connection;
             services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(connection));
             services.AddScoped<ISeeder, DatabaseSeeder>();
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             // Services
             services.AddMvc();

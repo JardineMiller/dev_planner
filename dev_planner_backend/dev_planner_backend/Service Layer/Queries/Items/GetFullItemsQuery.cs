@@ -1,15 +1,12 @@
 using System.Collections.Generic;
+using dev_planner_backend.Models;
+using MediatR;
 
 namespace dev_planner_backend.Service_Layer.Queries
 {
-    public class GetFullItemsQuery
+    public class GetFullItemsQuery : IRequest<List<Item>>
     {
-        public readonly HashSet<int> ItemIds;
-
-        public GetFullItemsQuery(HashSet<int> itemIds = null)
-        {
-            this.ItemIds = itemIds;
-        }
+        public HashSet<int> ItemIds = new HashSet<int>();
         
     }
 }

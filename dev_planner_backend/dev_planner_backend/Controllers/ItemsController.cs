@@ -1,21 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using dev_planner_backend.Contexts;
 using dev_planner_backend.Models;
-using dev_planner_backend.Services;
-using dev_planner_backend.Services.Mail;
-using dev_planner_backend.Services.Repositories;
-using dev_planner_backend.Service_Layer;
-using dev_planner_backend.Service_Layer.Commands._1._Command_Handlers;
 using dev_planner_backend.Service_Layer.Queries;
 using dev_planner_backend.Service_Layer.Queries.Handlers;
-using Microsoft.AspNetCore.Http;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using NLog;
 
 namespace dev_planner_backend.Controllers
 {
@@ -23,48 +13,29 @@ namespace dev_planner_backend.Controllers
     [Route("api/items")]
     public class ItemsController : Controller
     {
-        private readonly IGenericRepository<Item> repo;
         private readonly ILogger<ItemsController> logger;
-        private ItemQueryHandlers queries;
+        private readonly IMediator mediator;
 
-        public ItemsController(IGenericRepository<Item> repo, ILogger<ItemsController> logger, ItemQueryHandlers queries)
+        public ItemsController(ILogger<ItemsController> logger, IMediator mediator)
         {
-            this.repo = repo;
             this.logger = logger;
-            this.queries = queries;
+            this.mediator = mediator;
         }
 
         [HttpGet]
-        public IActionResult GetItems([FromQuery] bool full)
+        public IActionResult GetItems()
         {
-            if (!full)
-            {
-                return Ok(repo.Get());
-            }
-            
             var query = new GetFullItemsQuery();
-            var result = queries.GetFullItems.Run(query);
-
+            var result = mediator.Send(query).Result;
+            
             return Ok(result);
         }
 
         [HttpGet("{itemId}")]
-        public IActionResult GetItem(int itemId, [FromQuery] bool full)
+        public IActionResult GetItem([FromQuery] int itemId)
         {
-            if (!full)
-            {
-                var item = repo.Get(i => i.Id == itemId).FirstOrDefault();
-                if (item != null)
-                {
-                    return Ok(item);
-                }
-
-                logger.LogWarning($"Item with ID: {itemId} not found in the database.");
-                return NotFound();  
-            }
-
-            var query = new GetFullItemQuery(itemId);
-            var result = queries.GetFullItems.Run(query);
+            var query = new GetFullItemsQuery{ ItemIds = new HashSet<int> { itemId } };
+            var result = mediator.Send(query).Result;
 
             if (result != null)
             {
@@ -81,8 +52,7 @@ namespace dev_planner_backend.Controllers
         {
             try
             {
-                var savedItem = repo.Insert(item);
-                return Ok(savedItem.Id);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -98,7 +68,6 @@ namespace dev_planner_backend.Controllers
 
             try
             {
-                repo.Update(item);
                 return Ok(item);
             }
             catch (Exception e)
@@ -113,7 +82,6 @@ namespace dev_planner_backend.Controllers
         {
             try
             {
-                repo.Delete(itemId);
                 return Ok();
             }
             catch (Exception e)

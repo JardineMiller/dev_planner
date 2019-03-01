@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using dev_planner_backend.Models;
-using dev_planner_backend.Services.Repositories;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 
@@ -10,14 +8,12 @@ namespace dev_planner_backend.Service_Layer.Queries
 {
     public class GetItemsByNameQueryHandler
     {
-        private IGenericRepository<Item> repo;
         private readonly ILogger<GetItemsByNameQueryHandler> logger;
 
         private List<Item> items;
 
-        public GetItemsByNameQueryHandler(IGenericRepository<Item> repo, ILogger<GetItemsByNameQueryHandler> logger)
+        public GetItemsByNameQueryHandler(ILogger<GetItemsByNameQueryHandler> logger)
         {
-            this.repo = repo;
             this.logger = logger;
         }
 
@@ -51,8 +47,7 @@ namespace dev_planner_backend.Service_Layer.Queries
 
         private void initialiseContext(ICollection<int> itemIds)
         {
-            items = itemIds != null ? 
-                repo.Query(p => itemIds.Contains(p.Id)).ToList() : repo.Get();
+            
         }
     }
 }
