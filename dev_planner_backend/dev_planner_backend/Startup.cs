@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using dev_planner_backend.Configuration;
+﻿using dev_planner_backend.Configuration;
 using dev_planner_backend.Contexts;
-using dev_planner_backend.Services;
 using dev_planner_backend.Services.Mail;
 using dev_planner_backend.Services.Repositories;
-using dev_planner_backend.Service_Layer;
 using dev_planner_backend.Service_Layer.Commands._1._Command_Handlers;
 using dev_planner_backend.Service_Layer.Queries;
+using dev_planner_backend.Service_Layer.Queries.Handlers;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,10 +43,17 @@ namespace dev_planner_backend
 
             // Services
             services.AddMvc();
+            services.AddMediatR();
             services.AddTransient<IMailService, LocalMailService>();
 
-            // Handlers
+            // Queries
+            // -- Items --
             services.AddTransient<ItemQueryHandlers>();
+            services.AddTransient<GetFullItemsQueryHandler>();
+            services.AddTransient<GetItemsByNameQueryHandler>();
+
+            // Commands
+            // -- Items --
             services.AddTransient<ItemCommandHandlers>();
         }
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using dev_planner_backend.Contexts;
 
 namespace dev_planner_backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181216173310_AddComments")]
+    partial class AddComments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,9 +28,6 @@ namespace dev_planner_backend.Migrations
                     b.Property<int>("AuthorId");
 
                     b.Property<int?>("CommentId");
-
-                    b.Property<string>("Content")
-                        .HasMaxLength(300);
 
                     b.Property<int?>("ItemId");
 
@@ -49,8 +48,6 @@ namespace dev_planner_backend.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<DateTimeOffset>("CreatedDate");
 
                     b.Property<string>("Name")
                         .IsRequired()

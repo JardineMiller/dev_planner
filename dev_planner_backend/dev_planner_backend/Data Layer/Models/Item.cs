@@ -54,10 +54,7 @@ namespace dev_planner_backend.Models
         /// </summary>
         public List<Comment> Comments { get; set; }
 
-        public List<int> CommentIds
-        {
-            get { return Comments.Select(c => c.Id).ToList(); }
-            set { }
-        }
+        [JsonIgnore] 
+        public DateTimeOffset CreatedDate { get; set; }
     }
 }

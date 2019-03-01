@@ -18,5 +18,6 @@ namespace dev_planner_backend.Contexts
         public DbSet<Item> Items { get; set; }
         public DbSet<State> States { get; set; }
         public DbSet<Person> People { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

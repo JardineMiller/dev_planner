@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -14,23 +15,23 @@ namespace dev_planner_backend
     {
         private readonly ILogger<DatabaseSeeder> logger;
         private readonly ApplicationDbContext cnt;
-        
+
         public DatabaseSeeder(ILogger<DatabaseSeeder> logger, ApplicationDbContext cnt)
         {
             this.logger = logger;
             this.cnt = cnt;
         }
-        
+
         public void SeedAll()
         {
             var timer = new Stopwatch();
-            
+
             logger.LogInformation("Starting seed...");
-            
+
             seedPeople();
             seedStates();
             seedItems();
-            
+
             logger.LogInformation($"Seeding of database complete. It took {timer.ElapsedMilliseconds} ms");
         }
 
@@ -74,11 +75,68 @@ namespace dev_planner_backend
             {
                 var items = new List<Item>()
                 {
-                    new Item() {Name = "Finish Dev Planner App", StateId = 2, OwnerId = 1},
-                    new Item() {Name = "Seed Database", StateId = 2, OwnerId = 1},
-                    new Item() {Name = "Work out what to do next", StateId = 1, OwnerId = 1},
-                    new Item() {Name = "Eat loads of food", StateId = 4, OwnerId = 1},
-                    new Item() {Name = "Kick ass at UCD", StateId = 4, OwnerId = 2},
+                    new Item()
+                    {
+                        Name = "Finish Dev Planner App",
+                        StateId = 2,
+                        OwnerId = 1,
+                        CreatedDate = DateTimeOffset.UtcNow,
+                        Comments = new List<Comment>()
+                        {
+                            new Comment()
+                            {
+                                AuthorId = 1,
+                                PublishDate = DateTimeOffset.Now,
+                                Content = "First!",
+                                Replies = new List<Comment>()
+                                {
+                                    new Comment()
+                                    {
+                                        AuthorId = 2,
+                                        PublishDate = DateTimeOffset.Now,
+                                        Content = "First Reply!"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    new Item()
+                    {
+                        Name = "Seed Database",
+                        StateId = 2,
+                        OwnerId = 1,
+                        CreatedDate = DateTimeOffset.UtcNow,
+                        Comments = new List<Comment>()
+                        {
+                            new Comment()
+                            {
+                                AuthorId = 1,
+                                PublishDate = DateTimeOffset.Now,
+                                Content = "Second!"
+                            }
+                        }
+                    },
+                    new Item()
+                    {
+                        Name = "Work out what to do next",
+                        StateId = 1,
+                        OwnerId = 1,
+                        CreatedDate = DateTimeOffset.UtcNow,
+                    },
+                    new Item()
+                    {
+                        Name = "Eat loads of food",
+                        StateId = 4,
+                        OwnerId = 1,
+                        CreatedDate = DateTimeOffset.UtcNow,
+                    },
+                    new Item()
+                    {
+                        Name = "Kick ass at UCD",
+                        StateId = 4,
+                        OwnerId = 2,
+                        CreatedDate = DateTimeOffset.UtcNow,
+                    },
                 };
 
                 cnt.Items.AddRange(items);
