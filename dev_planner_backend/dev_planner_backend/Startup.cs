@@ -5,6 +5,7 @@ using dev_planner_backend.Services.Repositories;
 using dev_planner_backend.Service_Layer.Commands._1._Command_Handlers;
 using dev_planner_backend.Service_Layer.Queries;
 using dev_planner_backend.Service_Layer.Queries.Handlers;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,7 @@ namespace dev_planner_backend
 
             // Services
             services.AddMvc();
+            services.AddMediatR();
             services.AddTransient<IMailService, LocalMailService>();
 
             // Queries
