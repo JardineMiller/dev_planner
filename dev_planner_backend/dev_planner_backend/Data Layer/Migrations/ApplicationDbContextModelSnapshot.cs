@@ -50,6 +50,8 @@ namespace dev_planner_backend.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTimeOffset>("CreatedDate");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50);

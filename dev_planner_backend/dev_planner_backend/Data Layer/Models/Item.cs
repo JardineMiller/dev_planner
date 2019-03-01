@@ -53,5 +53,8 @@ namespace dev_planner_backend.Models
         /// List of comments for the item
         /// </summary>
         public List<Comment> Comments { get; set; }
+
+        [JsonIgnore] 
+        public DateTimeOffset CreatedDate { get; set; }
     }
 }

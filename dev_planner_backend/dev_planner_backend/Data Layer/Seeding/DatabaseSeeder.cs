@@ -80,6 +80,7 @@ namespace dev_planner_backend
                         Name = "Finish Dev Planner App",
                         StateId = 2,
                         OwnerId = 1,
+                        CreatedDate = DateTimeOffset.UtcNow,
                         Comments = new List<Comment>()
                         {
                             new Comment()
@@ -104,6 +105,7 @@ namespace dev_planner_backend
                         Name = "Seed Database",
                         StateId = 2,
                         OwnerId = 1,
+                        CreatedDate = DateTimeOffset.UtcNow,
                         Comments = new List<Comment>()
                         {
                             new Comment()
@@ -118,19 +120,22 @@ namespace dev_planner_backend
                     {
                         Name = "Work out what to do next",
                         StateId = 1,
-                        OwnerId = 1
+                        OwnerId = 1,
+                        CreatedDate = DateTimeOffset.UtcNow,
                     },
                     new Item()
                     {
                         Name = "Eat loads of food",
                         StateId = 4,
-                        OwnerId = 1
+                        OwnerId = 1,
+                        CreatedDate = DateTimeOffset.UtcNow,
                     },
                     new Item()
                     {
                         Name = "Kick ass at UCD",
                         StateId = 4,
-                        OwnerId = 2
+                        OwnerId = 2,
+                        CreatedDate = DateTimeOffset.UtcNow,
                     },
                 };
 
