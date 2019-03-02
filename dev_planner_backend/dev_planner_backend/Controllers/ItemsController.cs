@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using dev_planner_backend.Models;
 using dev_planner_backend.Service_Layer.Queries;
-using dev_planner_backend.Service_Layer.Queries.Handlers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -23,28 +23,51 @@ namespace dev_planner_backend.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetItems()
+        public IActionResult GetItems([FromQuery] bool returnFull = false)
         {
-            var query = new GetFullItemsQuery();
-            var result = mediator.Send(query).Result;
+            List<Item> result;
             
-            return Ok(result);
+            if (returnFull)
+            {
+                var query = new GetFullItemsQuery();
+                result = mediator.Send(query).Result; 
+            }
+            else
+            {
+                var query = new GetItemsQuery();
+                result = mediator.Send(query).Result; 
+            }
+
+            if (result.Any())
+            {
+                return Ok(result);
+            }
+
+            return NotFound();
         }
 
         [HttpGet("{itemId}")]
-        public IActionResult GetItem([FromQuery] int itemId)
+        public IActionResult GetItem(int itemId, [FromQuery] bool returnFull = false)
         {
-            var query = new GetFullItemsQuery{ ItemIds = new HashSet<int> { itemId } };
-            var result = mediator.Send(query).Result;
+            Item result;
+            
+            if (returnFull)
+            {
+                var query = new GetFullItemsQuery(itemId);
+                result = mediator.Send(query).Result.FirstOrDefault(); 
+            }
+            else
+            {
+                var query = new GetItemsQuery(itemId);
+                result = mediator.Send(query).Result.FirstOrDefault(); 
+            }
 
             if (result != null)
             {
                 return Ok(result);
             }
 
-            logger.LogWarning($"Item with ID: {itemId} not found in the database.");
             return NotFound();
-            
         }
 
         [HttpPost]

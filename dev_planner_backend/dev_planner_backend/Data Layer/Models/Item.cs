@@ -36,25 +36,24 @@ namespace dev_planner_backend.Models
         /// The current state of the item
         /// </summary>
         public State State { get; set; }
-        
-        
+
         /// <summary>
         /// The id of the current owner of the item
         /// </summary>
         [ForeignKey("Owner")]
         public int? OwnerId { get; set; }
-        
+
         /// <summary>
         /// The current owner if the item
         /// </summary>
         public Person Owner { get; set; }
-        
+
         /// <summary>
         /// List of comments for the item
         /// </summary>
         public List<Comment> Comments { get; set; }
 
-        [JsonIgnore] 
+        [JsonIgnore]
         public DateTimeOffset CreatedDate { get; set; }
     }
 }
